@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yt-Scrapper</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #ff5722;
+            --hover-color: #ff784e;
+            --input-border-color: #4a5568;
+            --input-bg-color: #1e293b;
+            --btn-bg-color: #81ff94;
+            --btn-hover-color: #0ea5e9;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--input-border-color);
+            background-color: var(--input-bg-color);
+            color: var(--text-color);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #9ca3af; /* Lighter placeholder text color */
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--btn-bg-color);
+            color: #1e293b;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--btn-hover-color);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Data Scrapper</h1>
+        <form th:action="@{/processing}" method="post">
+            <label for="videoLink">Enter Video Link</label>
+            <input type="text" name="videoLink" id="videoLink" placeholder="https://www.youtube.com/watch?v=example" required>
+            <button type="submit" class="btn">Scrap Data</button>
+        </form>
+    </div>
+</body>
+</html>

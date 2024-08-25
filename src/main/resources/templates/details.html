@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Video Details</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #ff5722;
+            --hover-color: #ff784e;
+            --tag-bg-color: #333333;
+            --link-hover-color: #ff784e;
+            --button-hover-color: #ff784e;
+            --font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.2em;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .thumbnail img:hover {
+            transform: scale(1.05);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: var(--tag-bg-color);
+            color: var(--text-color);
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 8px;
+            font-size: 0.85em;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-color);
+            transform: scale(1.05);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: var(--link-hover-color);
+        }
+
+        .custom-link {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .custom-link:hover {
+            color: var(--link-hover-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+
+            a {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${vtitle}">Video Title</h1>
+
+        <div class="thumbnail">
+            <img th:src="${vthumb}" alt="Video Thumbnail">
+        </div>
+
+        <h2>Tags:</h2>
+        <div class="tags">
+            <span class="tag" th:each="tag : ${vtags}" th:text="${tag}">Sample Tag</span>
+        </div>
+
+        <h2>Description:</h2>
+        <div id="description" th:data-description="${vdesc}"></div>
+
+        <button onclick="copyToClipboard()">Copy Title & Description</button>
+
+        <a href="/">Find New Video Details 🔎</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var descriptionElement = document.getElementById('description');
+            var descriptionText = descriptionElement.getAttribute('data-description');
+
+            function linkify(text) {
+                const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[-A-Z0-9+&@#\/%=~_|$])/ig;
+                return text.replace(urlPattern, function(url) {
+                    return '<a href="' + url + '" class="custom-link" target="_blank">' + url + '</a>';
+                });
+            }
+
+            var paragraphs = descriptionText.split('➡️');
+
+            descriptionElement.innerHTML = '';
+
+            paragraphs.forEach(function(paragraph) {
+                var p = document.createElement('p');
+                p.innerHTML = linkify(paragraph.trim());
+                descriptionElement.appendChild(p);
+            });
+        });
+
+        function copyToClipboard() {
+            var title = document.querySelector('h1').textContent;
+            var description = Array.from(document.querySelectorAll('#description p')).map(p => p.textContent).join('\n\n');
+            var textToCopy = `Title: ${title}\n\nDescription: ${description}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Title and Description copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
