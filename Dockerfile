@@ -12,8 +12,7 @@ COPY pom.xml .
 COPY src ./src
 
 # Build the application (package it as a JAR)
-RUN mvn clean package -DskipTestsgit add DockerFile
-
+RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime stage
 FROM openjdk:17-jdk-slim
