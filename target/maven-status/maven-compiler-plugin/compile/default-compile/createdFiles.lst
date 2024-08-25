@@ -1,0 +1,5 @@
+com\example\yt_scrapper\config\YtConfig.class
+com\example\yt_scrapper\controller\YtController.class
+com\example\yt_scrapper\YtScrapperApplication.class
+com\example\yt_scrapper\exceptions\GlobalExceptionHandler.class
+com\example\yt_scrapper\services\YtService.class
