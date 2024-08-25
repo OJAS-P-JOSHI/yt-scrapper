@@ -1,5 +1,3 @@
-// src/main/java/com/example/yt_scrapper/controller/YtController.java
-
 package com.example.yt_scrapper.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +31,16 @@ public class YtController {
                 String description = videoDetails.path("description").asText();
                 String thumbUrl = videoDetails.path("thumbnails").path("standard").path("url").asText();
                 String tags[] = youtubeService.extractTags(videoDetails);
+                
+                // Fetch comments
+                JsonNode comments = youtubeService.getVideoComments(videoId);
 
                 model.addAttribute("vtitle", title);
                 model.addAttribute("vdesc", description);
                 model.addAttribute("vthumb", thumbUrl);
                 model.addAttribute("vtags", tags);
-                
+                model.addAttribute("vcomments", comments);
+
                 return "details";
             } catch (Exception e) {
                 e.printStackTrace();

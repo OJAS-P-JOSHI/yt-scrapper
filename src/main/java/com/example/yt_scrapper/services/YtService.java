@@ -1,5 +1,3 @@
-// src/main/java/com/example/yt_scrapper/services/YtService.java
-
 package com.example.yt_scrapper.services;
 
 import java.util.regex.Matcher;
@@ -52,5 +50,20 @@ public class YtService {
     public String[] extractTags(JsonNode videoDetails) throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.treeToValue(videoDetails.path("tags"), String[].class);
+    }
+
+    public JsonNode getVideoComments(String videoId) throws Exception {
+        String apiUrl = "https://www.googleapis.com/youtube/v3/commentThreads";
+        String apiKey = "key=" + ytConfig.getApiKey();
+        String videoIdParam = "videoId=" + videoId;
+        String partParam = "part=snippet";
+        String maxResultsParam = "maxResults=10"; // Limit to 10 comments
+
+        String url = apiUrl + "?" + apiKey + "&" + partParam + "&" + videoIdParam + "&" + maxResultsParam;
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForObject(url, String.class);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.readTree(response).path("items");
     }
 }
