@@ -1,0 +1,11 @@
+# Use a lightweight OpenJDK base image
+FROM openjdk:17-jdk-slim
+
+# Expose port 8080 for the Spring Boot application
+EXPOSE 8080
+
+# Copy the built JAR file into the container
+COPY yt-scrapper.jar app.jar
+
+# Set the entry point to run the JAR file
+ENTRYPOINT ["java", "-jar", "app.jar"]
