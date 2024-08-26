@@ -27,11 +27,16 @@
             margin: 0;
         }
 
+        .page-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto; /* Center the wrapper */
+        }
+
         .main-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            max-width: 1100px;
             margin-bottom: 20px;
             flex-direction: row; /* Ensures containers are aligned horizontally */
         }
@@ -123,7 +128,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 10px;
         }
 
         .example-item {
@@ -138,9 +143,9 @@
         }
 
         .example-item img {
-            width: 200px;
+            width: 250px;
             height: auto;
-            border-radius: 5px;
+            border-radius: 30px;
             margin-bottom: 10px;
         }
 
@@ -179,58 +184,60 @@
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="form-container">
-            <h1>YouTube Video Scraper</h1>
-            <form id="videoForm" action="/processing" method="post">
-                <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube Video URL" required>
-                <button type="submit">Get Video Details</button>
-            </form>
+    <div class="page-wrapper">
+        <div class="main-container">
+            <div class="form-container">
+                <h1>YouTube Video Scraper</h1>
+                <form id="videoForm" action="/processing" method="post">
+                    <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube Video URL" required>
+                    <button type="submit">Get Video Details</button>
+                </form>
+            </div>
+
+            <div class="description-container">
+                <h2>About This Project</h2>
+                <p>
+                    This YouTube Video Scraper extracts detailed info from any YouTube video URL. Paste a link to get the title, description, comments, and more. Explore examples to see its features.
+                </p>
+                <p>
+                    Ideal for content creators, marketers, and analysts needing quick YouTube insights.
+                </p>
+            </div>
         </div>
 
-        <div class="description-container">
-            <h2>About This Project</h2>
-            <p>
-                This YouTube Video Scraper extracts detailed info from any YouTube video URL. Paste a link to get the title, description, comments, and more. Explore examples to see its features.
-            </p>
-            <p>
-                Ideal for content creators, marketers, and analysts needing quick YouTube insights.
-            </p>
-        </div>
-    </div>
-
-    <div class="video-row">
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/PObWuOZktqM/hqdefault.jpg" alt="Video Thumbnail 1">
-            <button onclick="selectVideo('https://youtu.be/PObWuOZktqM?si=LtHQf55PUIbQBD1N')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/Zxy8DmsJMTs/hqdefault.jpg" alt="Video Thumbnail 2">
-            <button onclick="selectVideo('https://youtu.be/Zxy8DmsJMTs?si=P2gw78utBzF2zTd5')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/5qG9Yi3bHd8/hqdefault.jpg" alt="Video Thumbnail 3">
-            <button onclick="selectVideo('https://youtu.be/5qG9Yi3bHd8?si=LnraWX5TdxJkvaRi')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/WDn_Bax0UFo/hqdefault.jpg" alt="Video Thumbnail 4">
-            <button onclick="selectVideo('https://youtu.be/WDn_Bax0UFo?si=vVBCtqg25lR81PFJ')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/7hi5zwO75yc/hqdefault.jpg" alt="Video Thumbnail 6">
-            <button onclick="selectVideo('https://youtu.be/7hi5zwO75yc?si=jggGQDTFOJSsPgF7')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/cTYRwJSOP8U/hqdefault.jpg" alt="Video Thumbnail 7">
-            <button onclick="selectVideo('https://youtu.be/cTYRwJSOP8U?si=Ht6j6pqLnlFWWIHp')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/EzkWAviyYgg/hqdefault.jpg" alt="Video Thumbnail 9">
-            <button onclick="selectVideo('https://youtu.be/EzkWAviyYgg?si=0yBlubz36fYyeTxw')">Try Now</button>
-        </div>
-        <div class="example-item">
-            <img src="https://img.youtube.com/vi/domt_Sx-wTY/hqdefault.jpg" alt="Video Thumbnail 10">
-            <button onclick="selectVideo('https://youtu.be/domt_Sx-wTY?si=C8h8ruc64gVrh03C')">Try Now</button>
+        <div class="video-row">
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/PObWuOZktqM/hqdefault.jpg" alt="Video Thumbnail 1">
+                <button onclick="selectVideo('https://youtu.be/PObWuOZktqM?si=LtHQf55PUIbQBD1N')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/Zxy8DmsJMTs/hqdefault.jpg" alt="Video Thumbnail 2">
+                <button onclick="selectVideo('https://youtu.be/Zxy8DmsJMTs?si=P2gw78utBzF2zTd5')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/5qG9Yi3bHd8/hqdefault.jpg" alt="Video Thumbnail 3">
+                <button onclick="selectVideo('https://youtu.be/5qG9Yi3bHd8?si=LnraWX5TdxJkvaRi')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/WDn_Bax0UFo/hqdefault.jpg" alt="Video Thumbnail 4">
+                <button onclick="selectVideo('https://youtu.be/WDn_Bax0UFo?si=vVBCtqg25lR81PFJ')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/7hi5zwO75yc/hqdefault.jpg" alt="Video Thumbnail 6">
+                <button onclick="selectVideo('https://youtu.be/7hi5zwO75yc?si=jggGQDTFOJSsPgF7')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/cTYRwJSOP8U/hqdefault.jpg" alt="Video Thumbnail 7">
+                <button onclick="selectVideo('https://youtu.be/cTYRwJSOP8U?si=Ht6j6pqLnlFWWIHp')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/EzkWAviyYgg/hqdefault.jpg" alt="Video Thumbnail 9">
+                <button onclick="selectVideo('https://youtu.be/EzkWAviyYgg?si=0yBlubz36fYyeTxw')">Try Now</button>
+            </div>
+            <div class="example-item">
+                <img src="https://img.youtube.com/vi/domt_Sx-wTY/hqdefault.jpg" alt="Video Thumbnail 10">
+                <button onclick="selectVideo('https://youtu.be/domt_Sx-wTY?si=C8h8ruc64gVrh03C')">Try Now</button>
+            </div>
         </div>
     </div>
 
