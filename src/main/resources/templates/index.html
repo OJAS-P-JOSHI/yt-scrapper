@@ -12,6 +12,7 @@
             --accent-color: #ff7449;
             --button-hover-color: #4eff69;
             --font-family: 'Arial', sans-serif;
+            --description-font: 'Courier New', Courier, monospace;
         }
 
         body {
@@ -26,29 +27,70 @@
             margin: 0;
         }
 
-        .container {
-            background-color: var(--card-bg-color);
-            padding: 30px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 770px; /* Increased max-width from 690px to 750px */
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+        .main-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 20px;
+            flex-direction: row; /* Ensures containers are aligned horizontally */
         }
 
+        .description-container,
+        .form-container {
+            background: linear-gradient(135deg, #1e1e1e, #2a2a2a); /* Gradient background */
+            padding: 15px 20px;
+            border-radius: 12px;
+            width: 50%;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            font-family: var(--description-font);
+            position: relative;
+            overflow-y: auto;
+            max-height: 350px; /* Same height for both containers */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-        h1 {
+        .description-container {
+            margin-left: 20px;
+        }
+
+        .form-container {
+            margin-right: 20px;
+            overflow: hidden; /* Hide scrollbar */
+        }
+
+        .description-container h2,
+        .form-container h1 {
             color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .description-container h2 {
+            font-size: 1.4em;
+        }
+
+        .form-container h1 {
             text-align: center;
-            margin-bottom: 25px;
             font-size: 2em;
             font-weight: bold;
         }
 
-        input, button {
+        .description-container p {
+            line-height: 1.5;
+            margin: 0;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+            white-space: normal;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-container input,
+        .form-container button {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -57,19 +99,21 @@
             font-size: 1em;
         }
 
-        input {
+        .form-container input {
             background-color: #2a2a2a;
             color: var(--text-color);
         }
 
-        button {
+        .form-container button {
             background-color: var(--accent-color);
             color: var(--text-color);
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
+            padding: 10px;
+            font-size: 0.9em;
         }
 
-        button:hover {
+        .form-container button:hover {
             background-color: var(--button-hover-color);
             transform: scale(1.05);
         }
@@ -79,6 +123,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 30px;
         }
 
         .example-item {
@@ -119,15 +164,39 @@
             transform: translateY(-5px);
         }
 
+        .description-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .description-container::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .description-container::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>YouTube Video Scraper</h1>
-        <form id="videoForm" action="/processing" method="post">
-            <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube Video URL" required>
-            <button type="submit">Get Video Details</button>
-        </form>
+    <div class="main-container">
+        <div class="form-container">
+            <h1>YouTube Video Scraper</h1>
+            <form id="videoForm" action="/processing" method="post">
+                <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube Video URL" required>
+                <button type="submit">Get Video Details</button>
+            </form>
+        </div>
+
+        <div class="description-container">
+            <h2>About This Project</h2>
+            <p>
+                This YouTube Video Scraper extracts detailed info from any YouTube video URL. Paste a link to get the title, description, comments, and more. Explore examples to see its features.
+            </p>
+            <p>
+                Ideal for content creators, marketers, and analysts needing quick YouTube insights.
+            </p>
+        </div>
     </div>
 
     <div class="video-row">
@@ -147,10 +216,6 @@
             <img src="https://img.youtube.com/vi/WDn_Bax0UFo/hqdefault.jpg" alt="Video Thumbnail 4">
             <button onclick="selectVideo('https://youtu.be/WDn_Bax0UFo?si=vVBCtqg25lR81PFJ')">Try Now</button>
         </div>
-        <!-- <div class="example-item">
-            <img src="https://img.youtube.com/vi/OAVOl-aSOJc/hqdefault.jpg" alt="Video Thumbnail 5">
-            <button onclick="selectVideo('https://youtu.be/OAVOl-aSOJc?si=SJwvW9Xz8IiLYARJ')">Try Now</button>
-        </div> -->
         <div class="example-item">
             <img src="https://img.youtube.com/vi/7hi5zwO75yc/hqdefault.jpg" alt="Video Thumbnail 6">
             <button onclick="selectVideo('https://youtu.be/7hi5zwO75yc?si=jggGQDTFOJSsPgF7')">Try Now</button>
@@ -159,10 +224,6 @@
             <img src="https://img.youtube.com/vi/cTYRwJSOP8U/hqdefault.jpg" alt="Video Thumbnail 7">
             <button onclick="selectVideo('https://youtu.be/cTYRwJSOP8U?si=Ht6j6pqLnlFWWIHp')">Try Now</button>
         </div>
-        <!-- <div class="example-item">
-            <img src="https://img.youtube.com/vi/ftYHO1a-fQA/hqdefault.jpg" alt="Video Thumbnail 8">
-            <button onclick="selectVideo('https://youtu.be/ftYHO1a-fQA?si=9W5Y-16Rfui2CAAN')">Try Now</button>
-        </div> -->
         <div class="example-item">
             <img src="https://img.youtube.com/vi/EzkWAviyYgg/hqdefault.jpg" alt="Video Thumbnail 9">
             <button onclick="selectVideo('https://youtu.be/EzkWAviyYgg?si=0yBlubz36fYyeTxw')">Try Now</button>
