@@ -9,8 +9,8 @@
             --bg-color: #121212;
             --card-bg-color: #1e1e1e;
             --text-color: #e0e0e0;
-            --accent-color: #ff5722;
-            --button-hover-color: #ff784e;
+            --accent-color: #ff7449;
+            --button-hover-color: #4eff69;
             --font-family: 'Arial', sans-serif;
         }
 
@@ -20,7 +20,7 @@
             font-family: var(--font-family);
             padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -31,9 +31,14 @@
             padding: 30px;
             border-radius: 12px;
             width: 100%;
-            max-width: 500px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 770px; /* Increased max-width from 690px to 750px */
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
         }
+
 
         h1 {
             color: var(--accent-color);
@@ -68,15 +73,111 @@
             background-color: var(--button-hover-color);
             transform: scale(1.05);
         }
+
+        .video-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .example-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--card-bg-color);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .example-item img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .example-item button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .example-item button:hover {
+            background-color: var(--button-hover-color);
+            transform: scale(1.05);
+        }
+
+        .example-item:hover {
+            transform: translateY(-5px);
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>YouTube Video Scraper</h1>
-        <form action="/processing" method="post">
-            <input type="text" name="videoLink" placeholder="Enter YouTube Video URL" required>
+        <form id="videoForm" action="/processing" method="post">
+            <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube Video URL" required>
             <button type="submit">Get Video Details</button>
         </form>
     </div>
+
+    <div class="video-row">
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/PObWuOZktqM/hqdefault.jpg" alt="Video Thumbnail 1">
+            <button onclick="selectVideo('https://youtu.be/PObWuOZktqM?si=LtHQf55PUIbQBD1N')">Try Now</button>
+        </div>
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/Zxy8DmsJMTs/hqdefault.jpg" alt="Video Thumbnail 2">
+            <button onclick="selectVideo('https://youtu.be/Zxy8DmsJMTs?si=P2gw78utBzF2zTd5')">Try Now</button>
+        </div>
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/5qG9Yi3bHd8/hqdefault.jpg" alt="Video Thumbnail 3">
+            <button onclick="selectVideo('https://youtu.be/5qG9Yi3bHd8?si=LnraWX5TdxJkvaRi')">Try Now</button>
+        </div>
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/WDn_Bax0UFo/hqdefault.jpg" alt="Video Thumbnail 4">
+            <button onclick="selectVideo('https://youtu.be/WDn_Bax0UFo?si=vVBCtqg25lR81PFJ')">Try Now</button>
+        </div>
+        <!-- <div class="example-item">
+            <img src="https://img.youtube.com/vi/OAVOl-aSOJc/hqdefault.jpg" alt="Video Thumbnail 5">
+            <button onclick="selectVideo('https://youtu.be/OAVOl-aSOJc?si=SJwvW9Xz8IiLYARJ')">Try Now</button>
+        </div> -->
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/7hi5zwO75yc/hqdefault.jpg" alt="Video Thumbnail 6">
+            <button onclick="selectVideo('https://youtu.be/7hi5zwO75yc?si=jggGQDTFOJSsPgF7')">Try Now</button>
+        </div>
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/cTYRwJSOP8U/hqdefault.jpg" alt="Video Thumbnail 7">
+            <button onclick="selectVideo('https://youtu.be/cTYRwJSOP8U?si=Ht6j6pqLnlFWWIHp')">Try Now</button>
+        </div>
+        <!-- <div class="example-item">
+            <img src="https://img.youtube.com/vi/ftYHO1a-fQA/hqdefault.jpg" alt="Video Thumbnail 8">
+            <button onclick="selectVideo('https://youtu.be/ftYHO1a-fQA?si=9W5Y-16Rfui2CAAN')">Try Now</button>
+        </div> -->
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/EzkWAviyYgg/hqdefault.jpg" alt="Video Thumbnail 9">
+            <button onclick="selectVideo('https://youtu.be/EzkWAviyYgg?si=0yBlubz36fYyeTxw')">Try Now</button>
+        </div>
+        <div class="example-item">
+            <img src="https://img.youtube.com/vi/domt_Sx-wTY/hqdefault.jpg" alt="Video Thumbnail 10">
+            <button onclick="selectVideo('https://youtu.be/domt_Sx-wTY?si=C8h8ruc64gVrh03C')">Try Now</button>
+        </div>
+    </div>
+
+    <script>
+        function selectVideo(url) {
+            document.getElementById('videoLink').value = url;
+            document.getElementById('videoForm').submit();
+        }
+    </script>
 </body>
 </html>
