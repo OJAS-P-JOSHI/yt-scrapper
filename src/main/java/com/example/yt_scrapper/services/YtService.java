@@ -57,7 +57,7 @@ public class YtService {
         String apiKey = "key=" + ytConfig.getApiKey();
         String videoIdParam = "videoId=" + videoId;
         String partParam = "part=snippet";
-        String maxResultsParam = "maxResults=10"; // Limit to 10 comments
+        String maxResultsParam = "maxResults=100"; // Limit to 10 comments
 
         String url = apiUrl + "?" + apiKey + "&" + partParam + "&" + videoIdParam + "&" + maxResultsParam;
         RestTemplate restTemplate = new RestTemplate();
