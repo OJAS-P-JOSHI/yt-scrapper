@@ -107,9 +107,63 @@
         </div>
     </header>
 
+    <!-- Info Bar -->
+    <div class="max-w-6xl w-full mx-auto mb-8">
+        <div class="group relative">
+            <!-- Info Icon Button -->
+            <button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
+                <svg class="w-5 h-5 text-accent" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-sm font-medium">About this Project</span>
+            </button>
+
+            <!-- Info Panel (Hidden by default, shown on hover/click) -->
+            <div class="hidden group-hover:block absolute left-0 right-0 mt-2 p-4 bg-gray-800 rounded-lg shadow-xl z-50 transform transition-all duration-200 ease-out opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0">
+                <div class="flex items-start gap-3">
+                    <div class="flex-shrink-0">
+                        <svg class="w-6 h-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-semibold text-accent">Project Overview</h3>
+                        <p class="text-sm leading-relaxed text-gray-300">
+                            This project is currently in its development phase, focusing on advanced YouTube comment analysis. 
+                            The core functionality involves fetching and processing YouTube comments to perform comprehensive 
+                            sentiment analysis across multiple dimensions:
+                        </p>
+                        <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                <span>Positive sentiment detection</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+                                <span>Negative sentiment analysis</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                                <span>Neutral comment classification</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                                <span>Emotional content recognition</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-300 mt-2">
+                            The project has successfully completed its initial phase and is functioning effectively. 
+                            Future updates will introduce more advanced analysis features and improved user interface elements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Video Thumbnail Grid -->
     <div class="max-w-6xl w-full mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 animate-fadeInUp">
+    <div id="videoGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 animate-fadeInUp">
             <!-- Video Thumbnails -->
             <div class="card shadow-lg transform transition-transform">
                 <img src="https://img.youtube.com/vi/PObWuOZktqM/hqdefault.jpg" alt="Video Thumbnail 1" class="w-full h-auto mb-4">
@@ -124,17 +178,14 @@
                 <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/0yw-z6f7Mb4?si=2xyzkO83mEe749Mc')">Try Now</button>
             </div>
             <div class="card shadow-lg transform transition-transform">
-                <img src="https://img.youtube.com/vi/WDn_Bax0UFo/hqdefault.jpg" alt="Video Thumbnail 4" class="w-full h-auto mb-4">
-                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/WDn_Bax0UFo?si=vVBCtqg25lR81PFJ')">Try Now</button>
+                <img src="https://img.youtube.com/vi/rn4fpgP31kI/hqdefault.jpg" alt="Video Thumbnail 4" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/rn4fpgP31kI?si=JhWWzr0vr3e7rKd1')">Try Now</button>
             </div>
             <div class="card shadow-lg transform transition-transform">
                 <img src="https://img.youtube.com/vi/7hi5zwO75yc/hqdefault.jpg" alt="Video Thumbnail 6" class="w-full h-auto mb-4">
                 <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/7hi5zwO75yc?si=jggGQDTFOJSsPgF7')">Try Now</button>
             </div>
-            <div class="card shadow-lg transform transition-transform">
-                <img src="https://img.youtube.com/vi/cTYRwJSOP8U/hqdefault.jpg" alt="Video Thumbnail 7" class="w-full h-auto mb-4">
-                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/cTYRwJSOP8U?si=Ht6j6pqLnlFWWIHp')">Try Now</button>
-            </div>
+
             <div class="card shadow-lg transform transition-transform">
                 <img src="https://img.youtube.com/vi/EzkWAviyYgg/hqdefault.jpg" alt="Video Thumbnail 9" class="w-full h-auto mb-4">
                 <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/EzkWAviyYgg?si=0yBlubz36fYyeTxw')">Try Now</button>
@@ -143,14 +194,81 @@
                 <img src="https://img.youtube.com/vi/domt_Sx-wTY/hqdefault.jpg" alt="Video Thumbnail 10" class="w-full h-auto mb-4">
                 <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/domt_Sx-wTY?si=C8h8ruc64gVrh03C')">Try Now</button>
             </div>
+            <div class="card shadow-lg transform transition-transform">
+                <img src="https://img.youtube.com/vi/CFeJnsdDFNc/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/CFeJnsdDFNc')">Try Now</button>
+            </div>
+            <div class="card shadow-lg transform transition-transform">
+                <img src="https://img.youtube.com/vi/EEPldpdmRRc/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/EEPldpdmRRc?si=ePfe-QiPBrvd5AJY')">Try Now</button>
+            </div>
+            <div class="card shadow-lg transform transition-transform">
+                <img src="https://img.youtube.com/vi/fJs1HW4jOXE/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/fJs1HW4jOXE?si=mCxHnPYXXZcDFEui')">Try Now</button>
+            </div>
+            <div class="card shadow-lg transform transition-transform">
+                <img src="https://img.youtube.com/vi/RbxVioxb9vI/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/RbxVioxb9vI?si=2MviUI1Dg3R3aUQH')">Try Now</button>
+            </div>
+            <div class="card shadow-lg transform transition-transform">
+                <img src="https://img.youtube.com/vi/3t6rG-Zl-zA/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-auto mb-4">
+                <button class="btn-primary py-2 rounded" onclick="selectVideo('https://youtu.be/3t6rG-Zl-zA?si=QHE9m6IAGdxbU_pP')">Try Now</button>
+            </div>
+
         </div>
     </div>
 
     <script>
+        // Handle info panel click toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const infoButton = document.querySelector('.group button');
+            const infoPanel = document.querySelector('.group > div[class*="hidden"]');
+            let isPanelVisible = false;
+
+            // Toggle panel on click
+            infoButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                isPanelVisible = !isPanelVisible;
+                if (isPanelVisible) {
+                    infoPanel.classList.remove('hidden');
+                    infoPanel.classList.add('block');
+                } else {
+                    infoPanel.classList.add('hidden');
+                    infoPanel.classList.remove('block');
+                }
+            });
+
+            // Close panel when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.group') && isPanelVisible) {
+                    isPanelVisible = false;
+                    infoPanel.classList.add('hidden');
+                    infoPanel.classList.remove('block');
+                }
+            });
+        });
+
         function selectVideo(url) {
             document.getElementById('videoLink').value = url;
             document.getElementById('videoForm').submit();
         }
+
+        // Shuffle the child nodes of #videoGrid on every page load so layout is randomized on refresh
+        (function() {
+            function shuffleGrid() {
+                const grid = document.getElementById('videoGrid');
+                if (!grid) return;
+                const nodes = Array.from(grid.children);
+                for (let i = nodes.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const tmp = nodes[i];
+                    nodes[i] = nodes[j];
+                    nodes[j] = tmp;
+                }
+                nodes.forEach(n => grid.appendChild(n));
+            }
+            document.addEventListener('DOMContentLoaded', shuffleGrid);
+        })();
     </script>
 </body>
 </html>
